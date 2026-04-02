@@ -96,15 +96,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Smooth scroll to sections
+    // Smooth scroll to sections with header offset
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
-            if (href !== '#' && document.querySelector(href)) {
+            const target = document.querySelector(href);
+
+            if (href !== '#' && target) {
                 e.preventDefault();
-                document.querySelector(href).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
+                const headerHeight = document.querySelector('header').offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
                 });
             }
         });
