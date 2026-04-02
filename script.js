@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Smooth scroll to sections with header offset
+    // Smooth scroll to sections with precise offset for fixed header
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -104,8 +104,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (href !== '#' && target) {
                 e.preventDefault();
+
                 const headerHeight = document.querySelector('header').offsetHeight;
-                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 10;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight - 8;
 
                 window.scrollTo({
                     top: targetPosition,

@@ -10,7 +10,7 @@
 /* Enable Smooth Scrolling */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 70px; /* sticky header safe offset for anchor scrolling */
+  /* no global scroll-padding; section scroll-margin-top handles sticky offset */
 }
 
 * {
@@ -200,11 +200,15 @@ nav {
 
 /* Sections */
 section {
-  padding: 100px 0;
+  padding: 80px 0;
+}
+
+#portfolio, #contact {
+  padding: 60px 0;
 }
 
 #home {
-  /* No individual anchor offset needed; handled by html scroll-padding-top */
+  /* no extra scroll-margin-top needed with JS-only anchor offset */
 }
 
 .bg-alt {
